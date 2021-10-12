@@ -1,0 +1,22 @@
+:host {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .container {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .slides {
+        transform: translateX(0px);
+    }
+    
+    ::ng-deep [calcarouselslide] {
+        display: inline-block;
+        width: 500px;
+        height: 500px;
+        user-select: none;  
+        
+        border: 1px solid black;
+    }
+}

@@ -1,10 +1,10 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[calCarouselSlide]'
 })
 export class CalCarouselSlideDirective {
 
-  constructor() { }
+  constructor(public elem: ElementRef) { }
 
 }
