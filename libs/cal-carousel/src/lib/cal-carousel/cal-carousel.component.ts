@@ -88,7 +88,10 @@ export class CalCarouselComponent implements AfterViewInit {
   onMouseMove(event: MouseEvent) {
     if (this.isPressed) {
       const { clientX } = event as MouseEvent;
-      this.goto_noTween(this.pixelOffset - (-clientX + this.mouseX));
+      const targetPosition = this.pixelOffset - (-clientX + this.mouseX);
+      if (targetPosition < this.centerPositions[0] && targetPosition > this.centerPositions[this.centerPositions.length - 1]) {
+        this.goto_noTween(targetPosition);
+      }
       this.mouseX = clientX;
     }
   }
