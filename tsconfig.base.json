@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@cal-carousel/cal-carousel": ["libs/cal-carousel/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,6 +1,31 @@
 {
   "version": 1,
   "projects": {
+    "cal-carousel": {
+      "projectType": "library",
+      "root": "libs/cal-carousel",
+      "sourceRoot": "libs/cal-carousel/src",
+      "prefix": "cal",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cal-carousel"],
+          "options": {
+            "jestConfig": "libs/cal-carousel/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/cal-carousel/src/**/*.ts",
+              "libs/cal-carousel/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "cal-carousel-demo": {
       "projectType": "application",
       "root": "apps/cal-carousel-demo",

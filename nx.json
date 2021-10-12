@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "cal-carousel": {
+      "tags": []
+    },
     "cal-carousel-demo": {
       "tags": []
     },
