@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "projects": {
+    "cal-carousel-demo": {
+      "projectType": "application",
+      "root": "apps/cal-carousel-demo",
+      "sourceRoot": "apps/cal-carousel-demo/src",
+      "prefix": "cal-carousel",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/cal-carousel-demo",
+            "index": "apps/cal-carousel-demo/src/index.html",
+            "main": "apps/cal-carousel-demo/src/main.ts",
+            "polyfills": "apps/cal-carousel-demo/src/polyfills.ts",
+            "tsConfig": "apps/cal-carousel-demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/cal-carousel-demo/src/favicon.ico",
+              "apps/cal-carousel-demo/src/assets"
+            ],
+            "styles": ["apps/cal-carousel-demo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/cal-carousel-demo/src/environments/environment.ts",
+                  "with": "apps/cal-carousel-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "cal-carousel-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "cal-carousel-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cal-carousel-demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/cal-carousel-demo/src/**/*.ts",
+              "apps/cal-carousel-demo/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/cal-carousel-demo"],
+          "options": {
+            "jestConfig": "apps/cal-carousel-demo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "cal-carousel-demo-e2e": {
+      "root": "apps/cal-carousel-demo-e2e",
+      "sourceRoot": "apps/cal-carousel-demo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/cal-carousel-demo-e2e/cypress.json",
+            "devServerTarget": "cal-carousel-demo:serve:development",
+            "tsConfig": "apps/cal-carousel-demo-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "cal-carousel-demo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/cal-carousel-demo-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "cal-carousel-demo"
+}
