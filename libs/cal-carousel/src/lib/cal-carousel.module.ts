@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalCarouselSlideDirective } from './cal-carousel-slide.directive';
 import { CalCarouselComponent } from './cal-carousel/cal-carousel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalCarouselSlideComponent } from './cal-carousel-slide/cal-carousel-slide.component';
 
 @NgModule({
   imports: [CommonModule, BrowserAnimationsModule],
   declarations: [
     CalCarouselComponent,
-    CalCarouselSlideDirective
+    CalCarouselSlideComponent
   ],
   exports: [
     CalCarouselComponent,
-    CalCarouselSlideDirective
+    CalCarouselSlideComponent
   ]
 })
 export class CalCarouselModule { }

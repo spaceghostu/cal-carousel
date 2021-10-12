@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, ContentChildren, ElementRef, Input, QueryList, Renderer2, ViewChild } from '@angular/core';
-import { CalCarouselSlideDirective } from '../cal-carousel-slide.directive';
+import { CalCarouselSlideComponent } from '../cal-carousel-slide/cal-carousel-slide.component';
 
 @Component({
   selector: 'cal-carousel',
@@ -19,7 +19,7 @@ export class CalCarouselComponent implements AfterViewInit {
 
   @ViewChild('container') containerRef!: ElementRef;
 
-  @ContentChildren(CalCarouselSlideDirective) slidesRef!: QueryList<CalCarouselSlideDirective>;
+  @ContentChildren(CalCarouselSlideComponent) slidesRef!: QueryList<CalCarouselSlideComponent>;
 
   @Input() defaultSlide = 0;
 
@@ -47,6 +47,7 @@ export class CalCarouselComponent implements AfterViewInit {
     this.slidesRef.forEach((slide, index) => {
       slide.elem.nativeElement.index = index;
       this.centerPositions[index] = -((index * this.itemWidth) + -((this.containerWidth / 2) - (this.itemWidth / 2)));
+      slide.containerCenter = (this.containerWidth / 2) - (this.itemWidth / 2);
     });
     this.goto_noTween(this.centerPositions[this.defaultSlide]);
   }
