@@ -1,5 +1,5 @@
 <div class="container" #container>
-  <div class="slides" [@carouselAnimation]="animationState">
+  <div class="slides" #slides [@carouselAnimation]="animationState" (@carouselAnimation.done)="onAnimationDone()">
     <ng-content></ng-content>
   </div>
 </div>

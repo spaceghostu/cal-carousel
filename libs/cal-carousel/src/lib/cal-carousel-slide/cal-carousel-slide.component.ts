@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'cal-carousel-slide',
@@ -11,6 +11,8 @@ export class CalCarouselSlideComponent implements AfterViewInit {
   @Input() proximity = 400;
   containerCenter = 0;
 
+  watchId = 0;
+
   @ViewChild('container') containerRef!: ElementRef;
 
   set scale(value: number) {
@@ -20,7 +22,11 @@ export class CalCarouselSlideComponent implements AfterViewInit {
   constructor(public elem: ElementRef) { }
 
   ngAfterViewInit() {
-    this.watchPosition();
+    this.setScale();
+  }
+
+  stopWatchPosition() {
+    cancelAnimationFrame(this.watchId);
   }
 
   scaleValue(value: number) {
@@ -34,6 +40,11 @@ export class CalCarouselSlideComponent implements AfterViewInit {
   }
 
   watchPosition() {
+    this.setScale();
+    this.watchId = requestAnimationFrame(() => this.watchPosition());
+  }
+
+  setScale() {
     const rect = this.elem.nativeElement.getBoundingClientRect();
     const diff = Math.abs(this.containerCenter - rect.x);
     const scale = this.scaleValue(diff);
@@ -42,7 +53,6 @@ export class CalCarouselSlideComponent implements AfterViewInit {
     } else {
       this.scale = this.minScale;
     }
-    requestAnimationFrame(() => this.watchPosition());
   }
 
 }

@@ -50,6 +50,23 @@ export class CalCarouselComponent implements AfterViewInit {
       slide.containerCenter = (this.containerWidth / 2) - (this.itemWidth / 2);
     });
     this.goto_noTween(this.centerPositions[this.defaultSlide]);
+    setTimeout(() => {
+      this.slidesRef.forEach(slide => slide.setScale());
+    }, 10);
+  }
+
+  startWatchPositions() {
+    this.slidesRef.forEach(slide => slide.watchPosition());
+  }
+
+  stopWatchPositions() {
+    this.slidesRef.forEach(slide => slide.stopWatchPosition());
+  }
+
+  onAnimationDone() {
+    if (!this.isPressed) {
+      this.stopWatchPositions();
+    }
   }
 
   goto_noTween(value: number) {
@@ -58,18 +75,19 @@ export class CalCarouselComponent implements AfterViewInit {
   }
 
   gotoIndex(index: number) {
-    const value = this.centerPositions[index];
-    this.pixelOffset = value;
-    this.animationState = { value: 'auto', params: { pixels: value } };
     this.currentIndex = index;
+    const value = this.centerPositions[index];
+    this.goto(value);
   }
 
   goto(value: number) {
+    this.startWatchPositions();
     this.pixelOffset = value;
     this.animationState = { value: 'auto', params: { pixels: value } };
   }
 
   onMouseDownHandler(event: MouseEvent) {
+    this.startWatchPositions();
     this.animationState = { value: '', params: { pixels: this.pixelOffset } };
     const isTouchEvent = event.type === 'touchstart';
 
