@@ -30,7 +30,7 @@
       "projectType": "application",
       "root": "apps/cal-carousel-demo",
       "sourceRoot": "apps/cal-carousel-demo/src",
-      "prefix": "cal-carousel",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

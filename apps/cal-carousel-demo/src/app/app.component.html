@@ -1,7 +1,18 @@
-<cal-carousel [defaultSlide]="2">
-  <cal-carousel-slide>Slide 1</cal-carousel-slide>
-  <cal-carousel-slide>Slide 2</cal-carousel-slide>
-  <cal-carousel-slide>Slide 3</cal-carousel-slide>
-  <cal-carousel-slide>Slide 4</cal-carousel-slide>
-  <cal-carousel-slide>Slide 5</cal-carousel-slide>
+<cal-carousel [defaultSlide]="2" (indexChanged)="onIndexChanged($event)">
+  <cal-carousel-slide>
+    <app-card title="Mobile <br> internet" icon="tap_and_play"></app-card>
+  </cal-carousel-slide>
+  <cal-carousel-slide>
+    <app-card title="Home internet" icon="wifi"></app-card>
+  </cal-carousel-slide>
+  <cal-carousel-slide>
+    <app-card title="Get a device" icon="phone_iphone"></app-card>
+  </cal-carousel-slide>
+  <cal-carousel-slide>
+    <app-card title="Add a phone line" icon="phone"></app-card>
+  </cal-carousel-slide>
+  <cal-carousel-slide>
+    <app-card title="Upgrade" icon="upgrade"></app-card>
+  </cal-carousel-slide>
 </cal-carousel>
+{{carouselIndex}}
