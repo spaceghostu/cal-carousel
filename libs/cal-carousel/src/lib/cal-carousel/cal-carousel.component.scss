@@ -5,9 +5,28 @@
     .container {
         white-space: nowrap;
         overflow: hidden;
+        padding: 10px 0;
     }
 
     .slides {
         transform: translateX(0px);
+    }
+    
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+        button {
+            background-color: black;
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }

@@ -50,6 +50,7 @@ export class CalCarouselComponent implements AfterViewInit {
       slide.containerCenter = (this.containerWidth / 2) - (this.itemWidth / 2);
     });
     this.goto_noTween(this.centerPositions[this.defaultSlide]);
+    this.currentIndex = this.defaultSlide;
     setTimeout(() => {
       this.slidesRef.forEach(slide => slide.setScale());
     }, 10);
@@ -66,6 +67,7 @@ export class CalCarouselComponent implements AfterViewInit {
   onAnimationDone() {
     if (!this.isPressed) {
       this.stopWatchPositions();
+      this.animationState = { value: '', params: { pixels: this.pixelOffset } };
     }
   }
 
@@ -84,6 +86,18 @@ export class CalCarouselComponent implements AfterViewInit {
     this.startWatchPositions();
     this.pixelOffset = value;
     this.animationState = { value: 'auto', params: { pixels: value } };
+  }
+
+  nextSlide() {
+    this.startWatchPositions();
+    this.animationState = { value: '', params: { pixels: this.pixelOffset } };
+    this.gotoIndex(this.currentIndex + 1);
+  }
+
+  previousSlide() {
+    this.startWatchPositions();
+    this.animationState = { value: '', params: { pixels: this.pixelOffset } };
+    this.gotoIndex(this.currentIndex - 1);
   }
 
   onMouseDownHandler(event: MouseEvent) {
