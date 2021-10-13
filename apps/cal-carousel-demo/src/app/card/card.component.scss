@@ -18,7 +18,7 @@
         align-items: center;
         justify-content: center;
         mat-icon {
-            transform: scale(3);
+            transform: scale(5);
         }
     }
 
@@ -36,15 +36,27 @@
         justify-content: center;
         opacity: 0;
         transform: translateY(-10px);
+        font-weight: bold;
+        pointer-events: all;
+        cursor: pointer;
+        div, mat-icon {
+            transition: color 100ms;
+            color: black;
+        }
+        &:hover div, &:hover mat-icon {
+            color: #fec100;
+        }
     }
 
     .border {
         position: absolute;
-        height: 100%;
+        height: 20px;
+        bottom: 0;
         width: 100%;
         border-bottom-color: #fec100;
         border-bottom-style: solid;
         border-bottom-width: 0px;
         border-radius: 20px;
+        pointer-events: none;
     }
 }

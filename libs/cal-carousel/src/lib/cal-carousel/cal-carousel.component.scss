@@ -20,8 +20,6 @@
         position: relative;
         top: -80px;
         button {
-            background-color: black;
-            color: white;
             border-radius: 50%;
             width: 35px;
             height: 35px;
@@ -29,6 +27,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+            border: none;
+            background-color: black;
+            color: white;
+            transition: background-color, color 100ms;
+            &:hover {
+                background-color: #fec100;
+                color: black;
+            }
         }
     }
 }
