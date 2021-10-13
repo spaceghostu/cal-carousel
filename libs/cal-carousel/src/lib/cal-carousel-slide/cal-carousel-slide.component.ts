@@ -10,6 +10,7 @@ export class CalCarouselSlideComponent implements AfterViewInit {
   @Input() minScale = 0.5;
   @Input() proximity = 400;
   containerCenter = 0;
+  active = false;
 
   watchId = 0;
 

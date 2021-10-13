@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, ContentChildren, ElementRef, Input, QueryList, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, Output, QueryList, Renderer2, ViewChild } from '@angular/core';
 import { CalCarouselSlideComponent } from '../cal-carousel-slide/cal-carousel-slide.component';
 
 @Component({
@@ -22,6 +22,8 @@ export class CalCarouselComponent implements AfterViewInit {
   @ContentChildren(CalCarouselSlideComponent) slidesRef!: QueryList<CalCarouselSlideComponent>;
 
   @Input() defaultSlide = 0;
+
+  @Output() indexChanged: EventEmitter<number> = new EventEmitter();
 
   itemWidth = 0;
   containerWidth = 0;
@@ -53,6 +55,7 @@ export class CalCarouselComponent implements AfterViewInit {
     this.currentIndex = this.defaultSlide;
     setTimeout(() => {
       this.slidesRef.forEach(slide => slide.setScale());
+      this.indexChanged.emit(this.currentIndex);
     }, 10);
   }
 
@@ -78,6 +81,7 @@ export class CalCarouselComponent implements AfterViewInit {
 
   gotoIndex(index: number) {
     this.currentIndex = index;
+    this.indexChanged.emit(index);
     const value = this.centerPositions[index];
     this.goto(value);
   }
@@ -98,6 +102,10 @@ export class CalCarouselComponent implements AfterViewInit {
     this.startWatchPositions();
     this.animationState = { value: '', params: { pixels: this.pixelOffset } };
     this.gotoIndex(this.currentIndex - 1);
+  }
+
+  setActiveSlide(index: number) {
+    this.slidesRef.forEach((slide, i) => slide.active = index === i);
   }
 
   onMouseDownHandler(event: MouseEvent) {
