@@ -1,17 +1,28 @@
-<cal-carousel [defaultSlide]="2" (indexChanged)="onIndexChanged($event)">
-  <cal-carousel-slide>
-    <app-card title="Mobile <br> internet" [active]="carouselIndex === 0" icon="tap_and_play"></app-card>
-  </cal-carousel-slide>
-  <cal-carousel-slide>
-    <app-card title="Home <br> internet" [active]="carouselIndex === 1" icon="wifi"></app-card>
-  </cal-carousel-slide>
-  <cal-carousel-slide>
-    <app-card title="Get a device" [active]="carouselIndex === 2" icon="phone_iphone"></app-card>
-  </cal-carousel-slide>
-  <cal-carousel-slide>
-    <app-card title="Add a <br> phone line" [active]="carouselIndex === 3" icon="phone"></app-card>
-  </cal-carousel-slide>
-  <cal-carousel-slide>
-    <app-card title="Upgrade" [active]="carouselIndex === 4" icon="upgrade"></app-card>
-  </cal-carousel-slide>
-</cal-carousel>
+<app-header></app-header>
+
+<div class="page-container">
+    
+  <div class="title">
+    <div>What are you</div>
+    <div class="bold">here to do?</div>
+  </div>
+
+  <cal-carousel [defaultSlide]="2" (indexChanged)="onIndexChanged($event)">
+    <cal-carousel-slide>
+      <app-card title="Mobile <br> internet" [active]="carouselIndex === 0" icon="tap_and_play"></app-card>
+    </cal-carousel-slide>
+    <cal-carousel-slide>
+      <app-card title="Home <br> internet" [active]="carouselIndex === 1" icon="wifi"></app-card>
+    </cal-carousel-slide>
+    <cal-carousel-slide>
+      <app-card title="Get a device" [active]="carouselIndex === 2" icon="phone_iphone"></app-card>
+    </cal-carousel-slide>
+    <cal-carousel-slide>
+      <app-card title="Add a <br> phone line" [active]="carouselIndex === 3" icon="phone"></app-card>
+    </cal-carousel-slide>
+    <cal-carousel-slide>
+      <app-card title="Upgrade" [active]="carouselIndex === 4" icon="upgrade"></app-card>
+    </cal-carousel-slide>
+  </cal-carousel>
+
+</div>
