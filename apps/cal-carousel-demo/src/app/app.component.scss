@@ -17,3 +17,12 @@ cal-carousel-slide {
         font-weight: bold;
     }
 }
+
+@media only screen and (max-width: 425px) {
+    .title {
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
+    }
+}

@@ -6,6 +6,8 @@
     flex-flow: row nowrap;
     position: relative;
     margin-bottom: 100px;
+    width: 100%;
+    box-sizing: border-box;
     .logo {
         width: 100px;
         height: 100px;
@@ -13,7 +15,7 @@
         margin-right: 40px;
     }
 
-    .link, .icon-link, .dropdown {
+    .link, .icon-link, .dropdown, .mobile-menu {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -43,5 +45,21 @@
         width: 10px;
         height: 10px;
         margin: 0 10px;
+    }
+
+    .mobile-menu {
+        display: none;
+        margin-left: auto;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .container {
+        padding: 0;
+    }
+    .link, .dropdown, .icon-link {
+        display: none !important;
+    }
+    .mobile-menu {
+        display: flex !important;
     }
 }
