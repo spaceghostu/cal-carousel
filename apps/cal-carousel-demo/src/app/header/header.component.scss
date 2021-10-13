@@ -1,0 +1,47 @@
+.container {
+    box-shadow: -1px 10px 34px -15px rgba(0,0,0,0.65);
+    height: 80px;
+    padding: 0 300px;
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    margin-bottom: 100px;
+    .logo {
+        width: 100px;
+        height: 100px;
+        border: 3px solid white;
+        margin-right: 40px;
+    }
+
+    .link, .icon-link, .dropdown {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 20px;
+        cursor: pointer;
+    }
+    .icon-link {
+        margin-left: auto;
+        transition: color 200ms;
+        color: black;
+        &:hover {
+            color: #fec100;
+        }
+    }
+    .link, .dropdown {
+        transition: background-color 200ms;
+        background-color: #fff;
+        &:hover {
+            background-color: #efefef;
+        }
+    }
+
+    .dot {
+        border-radius: 50%;
+        background-color: #fec100;
+        width: 10px;
+        height: 10px;
+        margin: 0 10px;
+    }
+}

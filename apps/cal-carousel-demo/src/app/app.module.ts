@@ -6,10 +6,12 @@ import { CalCarouselModule } from '@cal-carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './card/card.component';
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [AppComponent,
-    CardComponent
+    CardComponent,
+    HeaderComponent
   ],
   imports: [BrowserModule, CalCarouselModule, BrowserAnimationsModule, MatIconModule],
   providers: [],
