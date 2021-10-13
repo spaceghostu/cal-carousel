@@ -10,3 +10,11 @@
     height: 100%;
     pointer-events: none;
 }
+
+
+@media only screen and (max-width: 425px) {
+    :host {
+        width: 200px;
+        height: 200px;
+    }
+}

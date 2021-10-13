@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, Input, Output, QueryList, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, Output, QueryList, Renderer2, ViewChild } from '@angular/core';
 import { CalCarouselSlideComponent } from '../cal-carousel-slide/cal-carousel-slide.component';
 
 @Component({
@@ -41,6 +41,17 @@ export class CalCarouselComponent implements AfterViewInit {
   private _onMouseDownListener!: () => void;
 
   constructor(private _renderer: Renderer2) { }
+
+  @HostBinding('window.resise')
+  onResize() {
+    this.itemWidth = this.slidesRef.first.elem.nativeElement.getBoundingClientRect().width;
+    this.containerWidth = this.containerRef.nativeElement.getBoundingClientRect().width;
+    this.slidesRef.forEach((slide, index) => {
+      this.centerPositions[index] = -((index * this.itemWidth) + -((this.containerWidth / 2) - (this.itemWidth / 2)));
+      slide.containerCenter = (this.containerWidth / 2) - (this.itemWidth / 2);
+    });
+    this.goto_noTween(this.centerPositions[this.defaultSlide]);
+  }
 
   ngAfterViewInit() {
     this.itemWidth = this.slidesRef.first.elem.nativeElement.getBoundingClientRect().width;

@@ -26,3 +26,10 @@ cal-carousel-slide {
         text-align: center;
     }
 }
+
+@media only screen and (max-width: 425px) {
+    cal-carousel-slide {
+        width: 300px;
+        height: 300px;
+    }
+}
