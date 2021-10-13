@@ -95,13 +95,14 @@ export class CalCarouselComponent implements AfterViewInit {
   nextSlide() {
     this.startWatchPositions();
     this.animationState = { value: '', params: { pixels: this.pixelOffset } };
-    this.gotoIndex(this.currentIndex + 1);
+    setTimeout(() => this.gotoIndex(this.currentIndex + 1), 1);
+
   }
 
   previousSlide() {
     this.startWatchPositions();
     this.animationState = { value: '', params: { pixels: this.pixelOffset } };
-    this.gotoIndex(this.currentIndex - 1);
+    setTimeout(() => this.gotoIndex(this.currentIndex - 1), 1);
   }
 
   setActiveSlide(index: number) {
@@ -138,9 +139,15 @@ export class CalCarouselComponent implements AfterViewInit {
 
   onMouseUpHandler(event: MouseEvent) {
     const { clientX } = event;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { index } = event.target as any;
     if (this.downX === clientX) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this.gotoIndex((event.target as any).index);
+      if (index) {
+        this.gotoIndex(index);
+      } else {
+        this.startWatchPositions();
+        this.animationState = { value: '', params: { pixels: this.pixelOffset } };
+      }
     } else {
       this.gotoIndex(this.findClosest(this.pixelOffset));
     }
