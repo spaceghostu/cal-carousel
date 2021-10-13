@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'cal-carousel-demo';
   carouselIndex = 0;
   onIndexChanged(index: number) {
-    this.carouselIndex = index;
+    setTimeout(() => this.carouselIndex = index, 1);
   }
 }

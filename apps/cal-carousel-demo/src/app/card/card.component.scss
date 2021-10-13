@@ -8,9 +8,8 @@
 
     border-radius: 20px;
     box-shadow: 10px 10px 51px -12px rgba(0,0,0,0.63);
-    border-bottom-color: #fec100;
-    border-bottom-style: solid;
-    border-bottom-width: 0px;
+
+    position: relative;
 
     .icon {
         display: flex;
@@ -35,5 +34,17 @@
         flex-flow: row nowrap;
         align-items: center;
         justify-content: center;
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    .border {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-bottom-color: #fec100;
+        border-bottom-style: solid;
+        border-bottom-width: 0px;
+        border-radius: 20px;
     }
 }

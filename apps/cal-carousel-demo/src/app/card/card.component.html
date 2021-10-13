@@ -1,10 +1,11 @@
-<div class="container" [@activeAnimation]="active">
+<div class="container">
   <div class="icon">
     <mat-icon>{{icon}}</mat-icon>
   </div>
   <div class="title" [innerHTML]="title"></div>
-  <div class="action">
+  <div class="action" [@actionAnimation]="active">
     <div>START HERE</div>
     <mat-icon>keyboard_arrow_right</mat-icon>
   </div>
+  <div class="border" [@borderAnimation]="active"></div>
 </div>
